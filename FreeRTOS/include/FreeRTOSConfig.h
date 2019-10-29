@@ -82,19 +82,19 @@
 #endif
 
 //断言
-#define vAssertCalled(char,int) printf("Error:%s,%d\r\n",char,int)
-#define configASSERT(x) if((x)==0) vAssertCalled(__FILE__,__LINE__)
+#define vAssertCalled(char,int) printf("Error:%s,%d\r\n",char,int)      //检查是否出错
+#define configASSERT(x) if((x)==0) vAssertCalled(__FILE__,__LINE__)      
 
 /***************************************************************************************************************/
 /*                                        FreeRTOS基础配置配置选项                                              */
 /***************************************************************************************************************/
-#define configUSE_PREEMPTION					1                       //1使用抢占式内核，0使用协程
+#define configUSE_PREEMPTION					1                       //1使用抢占式调度器，0使用协作式调度器
 #define configUSE_TIME_SLICING					1						//1使能时间片调度(默认式使能的)
 #define configUSE_PORT_OPTIMISED_TASK_SELECTION	1                       //1启用特殊方法来选择下一个要运行的任务
                                                                         //一般是硬件计算前导零指令，如果所使用的
                                                                         //MCU没有这些硬件指令的话此宏应该设置为0！
 #define configUSE_TICKLESS_IDLE					0                       //1启用低功耗tickless模式
-#define configUSE_QUEUE_SETS					1                       //为1时启用队列
+#define configUSE_QUEUE_SETS					1                       //为1时启用队列集
 #define configCPU_CLOCK_HZ						(SystemCoreClock)       //CPU频率
 #define configTICK_RATE_HZ						(1000)                  //时钟节拍频率，这里设置为1000，周期就是1ms
 #define configMAX_PRIORITIES					(32)                    //可使用的最大优先级
@@ -154,9 +154,9 @@
 /***************************************************************************************************************/
 /*                                FreeRTOS可选函数配置选项                                                      */
 /***************************************************************************************************************/
-#define INCLUDE_xTaskGetSchedulerState          1                       
-#define INCLUDE_vTaskPrioritySet		        1
-#define INCLUDE_uxTaskPriorityGet		        1
+#define INCLUDE_xTaskGetSchedulerState          1     //xTaskGetSchedulerState()为可选函数，置1方可使用
+#define INCLUDE_vTaskPrioritySet		        1     //设置优先级 
+#define INCLUDE_uxTaskPriorityGet		        1     //
 #define INCLUDE_vTaskDelete				        1
 #define INCLUDE_vTaskCleanUpResources	        1
 #define INCLUDE_vTaskSuspend			        1
